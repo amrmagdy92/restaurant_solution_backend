@@ -18,6 +18,7 @@ const dine_in_route = require('./routes/dine_in_route');
 const delivery_route = require('./routes/delivery_route');
 const restaurant_route = require('./routes/restaurant_route');
 const auth_route = require('./routes/auth_route');
+const customer_route = require('./routes/customer_route');
 
 const auth = require("./utility/auth")();
 const app  = express();
@@ -34,5 +35,6 @@ app.use('/dinein', dine_in_route);
 app.use('/delivery', delivery_route);
 app.use('/restaurants', restaurant_route);
 app.use('/auth', auth_route);
+app.use('/customers', customer_route);
 
 module.exports = app;
