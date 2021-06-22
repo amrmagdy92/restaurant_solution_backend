@@ -68,7 +68,7 @@ module.exports = {
             customer.CUSTOMER_ADDRESSES = req.body.customer_addresses ? req.body.customer_addresses : customer.CUSTOMER_ADDRESSES;
             customer.CUSTOMER_ORDERS = req.body.customer_orders ? req.body.customer_orders : customer.CUSTOMER_ORDERS;
             customer.CUSTOMER_CLASS = req.body.customer_class ? req.body.customer_class : customer.CUSTOMER_CLASS;
-            const updated_customer = await user.save();
+            const updated_customer = await customer.save();
             return res.json({data:updated_customer, error: 0});
         } catch (error) {
             return res.status(500).json({
