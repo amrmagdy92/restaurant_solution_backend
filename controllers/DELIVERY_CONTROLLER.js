@@ -75,7 +75,6 @@ module.exports = {
                         error: err
                     });
                 }
-
                 return res.json(order);
             });
         });
