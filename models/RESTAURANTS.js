@@ -23,9 +23,18 @@ const RESTAURANT_SCHEMA = new mongoose.Schema({
 			required: true
 		}
 	},
-	DINE_IN_ORDERS: [DINE_IN_ORDER_SCHEMA],
-    DELIVERY_ORDERS: [DELIVERY_ORDER_SCHEMA],
-	RESTAURANT_MENU: [MENU_ITEM_SCHEMA],
+	DINE_IN_ORDERS: [{
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'DINE_IN'
+	}],
+    DELIVERY_ORDERS: [{
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'DELIVERY'
+	}],
+	RESTAURANT_MENU: [{
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'MENU_ITEMS'
+	}],
 	RESTAURANT_MANAGER: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'USERS',
