@@ -29,10 +29,10 @@ var USERS_SCHEMA = new mongoose.Schema({
         type: Boolean,
         default: false
     },
-    RESTAURANTS: {
-        type: [mongoose.Schema.Types.ObjectId],
+    RESTAURANTS: [{
+        type: mongoose.Schema.Types.ObjectId,
         ref: "RESTAURANTS"
-    }
+    }]
 })
 
 USERS_SCHEMA.pre('save', async function() {
