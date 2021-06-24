@@ -11,7 +11,10 @@ var DELIVERY_ORDER_SCHEMA = new mongoose.Schema({
         default: Date.now
     },
     ORDER_ITEMS: [{
-        MENU_ITEM: MENU_ITEM_SCHEMA,
+        MENU_ITEM: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'MENU_ITEMS'
+        },
         ITEM_QUANTITY: {
             type: Number,
             required: true,
