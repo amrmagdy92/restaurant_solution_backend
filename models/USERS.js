@@ -29,6 +29,10 @@ var USERS_SCHEMA = new mongoose.Schema({
         type: Boolean,
         default: false
     },
+    USER_TYPE: {
+        type: String,
+        required: true
+    },
     RESTAURANTS: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "RESTAURANTS"
