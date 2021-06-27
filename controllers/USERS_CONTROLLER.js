@@ -43,7 +43,8 @@ module.exports = {
                 PASSWORD : req.body.password,
                 RESTAURANTS: req.body.restaurants,
                 PHONE: req.body.phone,
-                USER_IS_ADMIN: req.body.user_is_admin
+                USER_IS_ADMIN: req.body.user_is_admin,
+                USER_EMPLOYEE_TYPE: req.body.user_employee_type
             });
             await user.save();
             return res.status(201).json({data:user, error: 0});
@@ -70,6 +71,7 @@ module.exports = {
             user.PASSWORD = req.body.password ? req.body.password : user.PASSWORD;
             user.RESTAURANTS = req.body.restaurants ? req.body.restaurants : user.RESTAURANTS;
             user.USER_IS_ADMIN = req.body.user_is_admin ? req.body.user_is_admin : user.USER_IS_ADMIN;
+            user.USER_EMPLOYEE_TYPE = req.body.user_employee_type ? req.body.user_employee_type : user.USER_EMPLOYEE_TYPE;
             const updatedUser = await user.save();
             return res.json({data:updatedUser, error: 0});
         } catch (error) {
