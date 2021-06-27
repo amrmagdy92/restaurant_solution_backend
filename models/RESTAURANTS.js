@@ -1,7 +1,4 @@
-const mongoose      = require('mongoose');
-const MENU_ITEM_SCHEMA = mongoose.model('MENU_ITEMS').schema;
-const DINE_IN_ORDER_SCHEMA   = mongoose.model('DINE_IN').schema;
-const DELIVERY_ORDER_SCHEMA   = mongoose.model('DELIVERY').schema;
+const mongoose = require('mongoose');
 
 const RESTAURANT_SCHEMA = new mongoose.Schema({
 	RESTAURANT_NAME: {
