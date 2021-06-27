@@ -49,4 +49,25 @@ var DINE_IN_ORDER_SCHEMA = new mongoose.Schema({
     }
 });
 
+DINE_IN_ORDER_SCHEMA.post('save', function() {
+    try {
+        for (var item in this.ORDER_ITEMS) {
+            KITCHEN_DEPARTMENT.findOneAndUpdate(
+                {DEPARTMENT_NAME: item.MENU_ITEM.ITEM_CATEGORY},
+                {$push: {CURRENT_DINE_ORDERS: this.ORDER_ITEMS}},
+                function(err, success) {
+                    if (err) {
+                        return err
+                    }
+                    if (success) {
+                        return success
+                    }
+            })
+        }
+    }
+    catch (err) {
+        return Promise.reject(err);
+    }
+});
+
 module.exports = mongoose.model('DINE_IN', DINE_IN_ORDER_SCHEMA);

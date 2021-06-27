@@ -45,7 +45,6 @@ var DELIVERY_ORDER_SCHEMA = new mongoose.Schema({
 
 DELIVERY_ORDER_SCHEMA.post('save', function() {
     try {
-        // TODO: try finding kitchen department then if found assign else throw error
         for (var item in this.ORDER_ITEMS) {
             KITCHEN_DEPARTMENT.findOneAndUpdate(
                 {DEPARTMENT_NAME: item.MENU_ITEM.ITEM_CATEGORY},
@@ -63,6 +62,6 @@ DELIVERY_ORDER_SCHEMA.post('save', function() {
     catch (err) {
         return Promise.reject(err);
     }
-})
+});
 
 module.exports = mongoose.model('DELIVERY', DELIVERY_ORDER_SCHEMA);
