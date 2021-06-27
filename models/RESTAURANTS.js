@@ -43,6 +43,10 @@ const RESTAURANT_SCHEMA = new mongoose.Schema({
 	RESTAURANT_WAITERS: {
 		type: [mongoose.Schema.Types.ObjectId],
 		ref: 'USERS'
+	},
+	RESTAURANT_CHEFS: {
+		type: [mongoose.Schema.Types.ObjectId],
+		ref: 'USERS'
 	}
 });
 
