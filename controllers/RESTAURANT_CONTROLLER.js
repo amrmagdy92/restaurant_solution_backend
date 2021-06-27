@@ -37,8 +37,8 @@ module.exports = {
             DELIVERY_ORDERS: req.body.restaurant_delivery,
 			RESTAURANT_MENU : req.body.restaurant_menu,
 			RESTAURANT_MANAGER : req.body.restaurant_manager,
-			RESTAURANT_WAITERS : req.body.restaurant_waiters
-
+			RESTAURANT_WAITERS : req.body.restaurant_waiters,
+            RESTAURANT_CHEFS : req.body.restaurant_chefs
         });
 
         Restaurant.save(function (err, Restaurant) {
@@ -73,7 +73,8 @@ module.exports = {
 			Restaurant.RESTAURANT_MENU = req.body.restaurant_menu ? req.body.restaurant_menu : Restaurant.RESTAURANT_MENU;
 			Restaurant.RESTAURANT_MANAGER = req.body.restaurant_manager ? req.body.restaurant_manager : Restaurant.RESTAURANT_MANAGER;
 			Restaurant.RESTAURANT_WAITERS = req.body.restaurant_waiters ? req.body.restaurant_waiters : Restaurant.RESTAURANT_WAITERS;
-			
+			Restaurant.RESTAURANT_CHEFS = req.body.restaurant_chefs ? req.body.restaurant_chefs : Restaurant.RESTAURANT_CHEFS;
+
             Restaurant.save(function (err, Restaurant) {
                 if (err) {
                     return res.status(500).json({
