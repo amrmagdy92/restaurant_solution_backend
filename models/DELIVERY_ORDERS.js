@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-const MENU_ITEM_SCHEMA = mongoose.model('MENU_ITEMS').schema;
 
 var DELIVERY_ORDER_SCHEMA = new mongoose.Schema({
     DELIVERY_PERSON: {
