@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var KITCHEN_DEPARTMENT = require('./KITCHEN_DEPARTMENT');
 
 var DELIVERY_ORDER_SCHEMA = new mongoose.Schema({
     DELIVERY_PERSON: {
@@ -45,18 +46,18 @@ var DELIVERY_ORDER_SCHEMA = new mongoose.Schema({
 DELIVERY_ORDER_SCHEMA.post('save', function() {
     try {
         // TODO: try finding kitchen department then if found assign else throw error
-        for (var item in this.ORDER_ITEMS.MENU_ITEM) {
-            if (item.ITEM_CATEGORY == 'Beverage') {
-                // assign to beverage kitchen
-            } else if (item.ITEM_CATEGORY == 'Grilled') {
-                // assign to grilled kitchen
-            } else if (item.ITEM_CATEGORY == 'Seafood') {
-                // assign to seafood kitchen
-            } else if (item.ITEM_CATEGORY == 'Healthy') {
-                // assign to healthy kitchen
-            } else if (item.ITEM_CATEGORY == 'Dessert') {
-                // assign to dessert kitchen
-            }
+        for (var item in this.ORDER_ITEMS) {
+            KITCHEN_DEPARTMENT.findOneAndUpdate(
+                {DEPARTMENT_NAME: item.MENU_ITEM.ITEM_CATEGORY},
+                {$push: {CURRENT_DELIVERY_ORDERS: this.ORDER_ITEMS}},
+                function(err, success) {
+                    if (err) {
+                        return err
+                    }
+                    if (success) {
+                        return success
+                    }
+            })
         }
     }
     catch (err) {
