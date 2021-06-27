@@ -29,7 +29,7 @@ var USERS_SCHEMA = new mongoose.Schema({
         type: Boolean,
         default: false
     },
-    USER_TYPE: {
+    USER_EMPLOYEE_TYPE: {
         type: String,
         required: true
     },
