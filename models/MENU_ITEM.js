@@ -17,7 +17,7 @@ const MENU_ITEM_SCHEMA = new mongoose.Schema({
 	ITEM_CATEGORY: {
 		type: String,
 		enum: ['Beverage', 'Grilled', 'Seafood', 'Healthy', 'Dessert'],
-		default: 'Food'
+		default: 'Grilled'
 	}
 });
 
