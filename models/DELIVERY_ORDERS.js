@@ -48,7 +48,7 @@ DELIVERY_ORDER_SCHEMA.post('save', function() {
         for (var item in this.ORDER_ITEMS) {
             KITCHEN_DEPARTMENT.findOneAndUpdate(
                 {DEPARTMENT_NAME: item.MENU_ITEM.ITEM_CATEGORY},
-                {$push: {CURRENT_DELIVERY_ORDERS: this.ORDER_ITEMS}},
+                {$push: {CURRENT_DELIVERY_ORDERS: item}},
                 function(err, success) {
                     if (err) {
                         return err
