@@ -11,6 +11,7 @@ mongoose.set('useUnifiedTopology', true);
 
 mongoose.connect(mongoURI);
 
+const index_route = require('./routes/index');
 const user_route = require('./routes/user_route');
 const ingredient_route = require('./routes/ingredient_route');
 const menu_route = require('./routes/menu_route');
@@ -28,6 +29,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(auth.initialize());
 
+app.use('/', index_route);
 app.use('/users', user_route);
 app.use('/ingredients', ingredient_route);
 app.use('/products', menu_route);
