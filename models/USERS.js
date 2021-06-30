@@ -43,7 +43,7 @@ USERS_SCHEMA.pre('save', async function() {
     try {
         const NEW_USER = this;
         const SALT_FACTOR = 10;
-        if (!USER.isModified('password')) return;
+        if (!NEW_USER.isModified('password')) return;
         const salt = await bcrypt.genSalt(SALT_FACTOR);
         const hash = await bcrypt.hash(NEW_USER.PASSWORD, salt, null);
         NEW_USER.PASSWORD = hash;
