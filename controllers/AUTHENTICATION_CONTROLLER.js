@@ -7,8 +7,8 @@ module.exports = {
         if (req.body.email && req.body.password) {
             var email = req.body.email;
             var password = req.body.password;
-            var user = await User.findOne({ email });
-            const isMatch = await user.comparePassword(password);
+            var user = await User.findOne({ EMAIL: email });
+            var isMatch = await user.comparePassword(password);
             if (user && isMatch) {
                 var payload = {
                     id: user.id
