@@ -13,7 +13,7 @@ module.exports = {
                 var payload = {
                     id: user.id
                 };
-                var token = jwt.encode(payload, cfg.jwtSecret);
+                var token = jwt.sign(payload, cfg.jwtSecret);
                 res.json({
                     token: token
                 });
