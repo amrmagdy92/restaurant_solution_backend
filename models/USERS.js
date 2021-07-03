@@ -41,12 +41,11 @@ var USERS_SCHEMA = new mongoose.Schema({
 
 USERS_SCHEMA.pre('save', async function() {
     try {
-        const NEW_USER = this;
         const SALT_FACTOR = 10;
-        if (!NEW_USER.isModified('password')) return;
+        if (!this.isModified('PASSWORD')) return;
         const salt = await bcrypt.genSalt(SALT_FACTOR);
-        const hash = await bcrypt.hash(NEW_USER.PASSWORD, salt, null);
-        NEW_USER.PASSWORD = hash;
+        const hash = await bcrypt.hash(this.PASSWORD, salt, null);
+        this.PASSWORD = hash;
         return;
     } catch (error) {
         return Promise.reject(error)

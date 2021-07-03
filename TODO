@@ -1,2 +1,1 @@
 TODO: check if there's a better design for the users model
-TODO: find out why comparePassword method has an undefined this.PASSWORD field
