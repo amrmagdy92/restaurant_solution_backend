@@ -12,11 +12,14 @@ module.exports = {
                 var payload = {
                     id: user.id
                 };
-                var token = jwt.sign(payload,
+                var accessToken = jwt.sign(payload,
                     process.env.ACCESS_TOKEN_SECRET,
                     {expiresIn: process.env.TOKEN_DURATION});
+                var refreshToken = jwt.sign(payload,
+                    process.env.REFRESH_TOKEN_SECRET);
                 res.json({
-                    token: token
+                    accessToken: accessToken,
+                    refreshToken: refreshToken
                 });
             } else {
                 res.sendStatus(401);
