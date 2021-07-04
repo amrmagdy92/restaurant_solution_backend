@@ -1,6 +1,5 @@
 const User = require('../models/USERS')
 const jwt  = require('jsonwebtoken')
-const cfg  = require('../jwt')
 
 module.exports = {
     token: async function(req, res) {  
@@ -13,7 +12,7 @@ module.exports = {
                 var payload = {
                     id: user.id
                 };
-                var token = jwt.sign(payload, cfg.jwtSecret);
+                var token = jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET);
                 res.json({
                     token: token
                 });
