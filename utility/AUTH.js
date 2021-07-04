@@ -11,6 +11,14 @@ const params = {
     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken()
 };
 
+passport.serializeUser(function(user, done) {
+    done(null, user);
+  });
+  
+  passport.deserializeUser(function(user, done) {
+    done(null, user);
+  });
+
 module.exports = function() {  
     var strategy = new Strategy(params, async (payload, done) => {
         const user = await User.findOne({_id: payload.id});
