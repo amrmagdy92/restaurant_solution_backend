@@ -9,7 +9,7 @@ const noop  = (req,res,next) => next();
 router
     .get('/', isDev ? noop : auth.authenticate(), user_controller.list)
     .get('/:id', auth.authenticate(), user_controller.show)
-    .post('/', auth.authenticate(), user_controller.create)
+    .post('/', auth.initialize(), user_controller.create)
     .put('/:id', auth.authenticate(), user_controller.update)
     .delete('/:id', auth.authenticate(), user_controller.remove);
 
