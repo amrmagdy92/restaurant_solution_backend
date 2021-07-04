@@ -2,7 +2,7 @@ const User = require('../models/USERS')
 const jwt  = require('jsonwebtoken')
 
 module.exports = {
-    accessToken: async function(req, res) {  
+    token: async function(req, res) {  
         if (req.body.email && req.body.password) {
             var email = req.body.email;
             var password = req.body.password;
