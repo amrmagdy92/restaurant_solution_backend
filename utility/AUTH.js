@@ -7,7 +7,7 @@ const ExtractJwt = passportJWT.ExtractJwt;
 const Strategy   = passportJWT.Strategy;  
 
 const params = {  
-    secretOrKey: cfg.jwtSecret,
+    secretOrKey: process.env.ACCESS_TOKEN_SECRET,
     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken()
 };
 
