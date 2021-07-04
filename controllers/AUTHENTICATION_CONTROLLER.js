@@ -12,7 +12,9 @@ module.exports = {
                 var payload = {
                     id: user.id
                 };
-                var token = jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET);
+                var token = jwt.sign(payload,
+                    process.env.ACCESS_TOKEN_SECRET,
+                    {expiresIn: process.env.TOKEN_DURATION});
                 res.json({
                     token: token
                 });
