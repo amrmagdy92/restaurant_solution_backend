@@ -9,10 +9,10 @@ const CHAT_SCHEMA = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "USERS"
     },
-    MESSAGES: {
+    MESSAGES: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "CHAT_MESSAGES"
-    }
+    }]
 });
 
 module.exports = mongoose.model("CHATS", CHAT_SCHEMA);
