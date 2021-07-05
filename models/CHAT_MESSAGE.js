@@ -2,7 +2,8 @@ var mongoose = require('mongoose');
 
 const CHAT_MESSAGE_SCHEMA = new mongoose.Schema({
     MESSAGE_TIME: {
-        type: String,
+        type: Date,
+        default: Date.now,
         required: true
     },
     MESSAGE_CONTENT: {
